@@ -33,6 +33,26 @@ export default function DialPadScreen() {
     if (!phoneNumber) return;
     console.log('Calling...', phoneNumber);
     // TODO: Add actual SIP/call logic here
+    
+    // Attempt to open the Flutter module via a native bridge
+    // Since this is an Expo project, you will need a custom native module
+    // or an Expo config plugin to launch the FlutterViewController/FlutterActivity.
+    // For now, we will show an alert.
+    import('react-native').then(({ Alert, NativeModules }) => {
+      Alert.alert(
+        'Make Call',
+        'Redirecting to Flutter module: ' + phoneNumber,
+        [
+          { text: 'OK', onPress: () => {
+            if (NativeModules.FlutterModule && NativeModules.FlutterModule.start) {
+               NativeModules.FlutterModule.start();
+            } else {
+               console.warn('FlutterModule is not linked natively yet.');
+            }
+          }}
+        ]
+      );
+    });
   };
 
   return (
