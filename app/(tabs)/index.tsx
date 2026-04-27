@@ -38,20 +38,22 @@ export default function DialPadScreen() {
     // Since this is an Expo project, you will need a custom native module
     // or an Expo config plugin to launch the FlutterViewController/FlutterActivity.
     // For now, we will show an alert.
-    import('react-native').then(({ Alert, NativeModules }) => {
-      Alert.alert(
-        'Make Call',
-        'Redirecting to Flutter module: ' + phoneNumber,
-        [
-          { text: 'OK', onPress: () => {
-            if (NativeModules.FlutterModule && NativeModules.FlutterModule.start) {
-               NativeModules.FlutterModule.start();
-            } else {
-               console.warn('FlutterModule is not linked natively yet.');
-            }
-          }}
-        ]
-      );
+    import('react-native').then(({ Alert, Linking }) => {
+      const url = `flutter-siprix://call?number=${phoneNumber}`;
+      
+      Linking.canOpenURL(url).then(supported => {
+        if (supported) {
+          Linking.openURL(url);
+        } else {
+          Alert.alert(
+            'Lỗi mở App',
+            'Không tìm thấy module Flutter được cài đặt trên thiết bị (hoặc chưa cấu hình scheme). Vui lòng đảm bảo module Flutter đã được build và chạy trên máy.',
+            [{ text: 'OK' }]
+          );
+        }
+      }).catch(err => {
+        console.error('An error occurred', err);
+      });
     });
   };
 

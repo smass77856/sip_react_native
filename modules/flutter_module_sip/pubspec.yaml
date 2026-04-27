@@ -112,3 +112,8 @@ flutter_launcher_icons:
   macos:
     generate: true
     image_path: "assets/logo.png"
+
+  module:
+    androidX: true
+    androidPackage: com.siprix.voip_sdk_example
+    iosBundleIdentifier: com.siprix.voipSdkExample
