@@ -1,0 +1,21 @@
+dependencies: \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_frameworks/Debug/iphoneos/Pods.build/Debug-iphoneos/GoogleDataTransport.build/module.modulemap \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/GDTCORFlatFileStorage+Promises.m \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORFlatFileStorage+Promises.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORFlatFileStorage.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Foundation.framework/Modules/module.modulemap \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Internal/GDTCORLifecycle.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Internal/GDTCORPlatform.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/SystemConfiguration.framework/Modules/module.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Modules/module.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreTelephony.framework/Modules/module.modulemap \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Internal/GDTCORStorageEventSelector.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORTargets.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Internal/GDTCORStorageProtocol.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Internal/GDTCORStorageSizeBytes.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_frameworks/Debug/iphoneos/Pods.build/Debug-iphoneos/PromisesObjC.build/module.modulemap \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromises.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORMetricsMetadata.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Internal/GDTCOREventDropReason.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORStorageMetadata.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORUploadBatch.h

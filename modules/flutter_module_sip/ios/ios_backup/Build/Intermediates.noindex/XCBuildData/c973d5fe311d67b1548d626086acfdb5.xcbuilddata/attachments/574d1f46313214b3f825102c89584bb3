@@ -1,0 +1,4 @@
+
+module siprix_voip_sdk_ios.__Swift {
+  exclude header "siprix_voip_sdk_ios-Swift.h"
+}

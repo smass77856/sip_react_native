@@ -1,0 +1,24 @@
+dependencies: \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/include/Darwin.modulemap \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_frameworks/Debug/iphonesimulator/Pods.build/Debug-iphonesimulator/FirebaseCore.build/module.modulemap \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRApp.m \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/UIKit.framework/Modules/module.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/Foundation.framework/Modules/module.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/include/ObjectiveC.modulemap \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRApp.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRAnalyticsConfiguration.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRBundleUtil.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRComponentContainerInternal.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIRComponentContainer.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIRLibrary.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRConfigurationInternal.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRConfiguration.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRLoggerLevel.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRFirebaseUserAgent.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIRAppInternal.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIRHeartbeatLogger.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIRLogger.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIROptionsInternal.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIROptions.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRVersion.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_frameworks/Debug/iphonesimulator/Pods.build/Debug-iphonesimulator/GoogleUtilities.build/module.modulemap

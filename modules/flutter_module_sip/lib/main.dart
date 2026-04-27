@@ -245,6 +245,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: WidgetsBinding.instance.platformDispatcher.defaultRouteName != '/' ? WidgetsBinding.instance.platformDispatcher.defaultRouteName : null,
       routes: <String, WidgetBuilder>{
         CallAddPage.routeName:
             (BuildContext context) => const CallAddPage(true),
@@ -252,6 +253,10 @@ class _MyAppState extends State<MyApp> {
         AccountPage.routeName: (BuildContext context) => const AccountPage(),
         SubscrAddPage.routeName:
             (BuildContext context) => const SubscrAddPage(),
+        '/call_screen': (BuildContext context) {
+           // Ở đây bạn có thể bóc tách params từ defaultRouteName để hiển thị call
+           return const CallAddPage(true); // Tạm trả về trang gọi
+        }
       },
       home: const HomePage(),
       title: 'OneCX',

@@ -1,0 +1,37 @@
+dependencies: \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_frameworks/Debug/iphoneos/Pods.build/Debug-iphoneos/FirebaseMessaging.build/module.modulemap \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/FIRMessaging.m \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/Public/FirebaseMessaging/FIRMessaging.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Foundation.framework/Modules/module.modulemap \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_frameworks/Debug/iphoneos/Pods.build/Debug-iphoneos/GoogleUtilities.build/module.modulemap \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FirebaseCoreInternal.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_frameworks/Debug/iphoneos/Pods.build/Debug-iphoneos/FirebaseCore.build/module.modulemap \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FIRAppInternal.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FIRComponent.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FIRComponentContainer.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FIRComponentType.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FIRHeartbeatLogger.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FIRLibrary.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FIRLogger.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseInstallations/Source/Library/Private/FirebaseInstallationsInternal.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_frameworks/Debug/iphoneos/Pods.build/Debug-iphoneos/FirebaseInstallations.build/module.modulemap \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Interop/FIRMessagingInterop.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/FIRMessagingAnalytics.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/Interop/Analytics/Public/FIRAnalyticsInterop.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/FIRMessagingCode.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/FIRMessagingConstants.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/FIRMessagingContextManagerService.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/FIRMessagingDefines.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/FIRMessagingLogger.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/FIRMessagingPubSub.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/FIRMessagingRemoteNotificationsProxy.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/FIRMessagingRmqManager.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/FIRMessagingSyncMessageManager.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/FIRMessagingUtilities.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/FIRMessaging_Private.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/NSError+FIRMessaging.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/Token/FIRMessagingAuthService.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/Token/FIRMessagingCheckinService.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/Token/FIRMessagingTokenInfo.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/Token/FIRMessagingAPNSInfo.h \
+  /Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/Token/FIRMessagingTokenManager.h

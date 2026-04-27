@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView, Dimensions, Alert, Linking } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView, Dimensions, Alert, Linking, NativeModules } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
@@ -33,21 +33,12 @@ export default function DialPadScreen() {
     if (!phoneNumber) return;
     console.log('Calling...', phoneNumber);
     
-    const url = `flutter-siprix://call?number=${phoneNumber}`;
-    
-    Linking.canOpenURL(url).then(supported => {
-      if (supported) {
-        Linking.openURL(url);
-      } else {
-        Alert.alert(
-          'Lỗi mở App',
-          'Không tìm thấy module Flutter được cài đặt trên thiết bị (hoặc chưa cấu hình scheme). Vui lòng đảm bảo module Flutter đã được build và chạy trên máy.',
-          [{ text: 'OK' }]
-        );
-      }
-    }).catch(err => {
-      console.error('An error occurred', err);
-    });
+    const { SiprixBridge } = NativeModules;
+    if (SiprixBridge) {
+      SiprixBridge.openSiprixCall(phoneNumber, 'user123', 'pass123');
+    } else {
+      console.warn('SiprixBridge module not found');
+    }
   };
 
   return (

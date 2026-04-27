@@ -62,6 +62,11 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  module:
+    androidX: true
+    androidPackage: com.siprix.voip_sdk_example
+    iosBundleIdentifier: com.siprix.voipSdkExample
+
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/music.mp3
@@ -112,8 +117,3 @@ flutter_launcher_icons:
   macos:
     generate: true
     image_path: "assets/logo.png"
-
-  module:
-    androidX: true
-    androidPackage: com.siprix.voip_sdk_example
-    iosBundleIdentifier: com.siprix.voipSdkExample

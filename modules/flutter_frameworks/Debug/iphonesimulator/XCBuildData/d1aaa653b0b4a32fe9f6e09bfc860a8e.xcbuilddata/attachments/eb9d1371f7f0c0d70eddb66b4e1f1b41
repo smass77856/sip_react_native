@@ -1,0 +1,23 @@
+{
+  "version": 0,
+  "use-external-names": false,
+  "case-sensitive": false,
+  "roots": [{
+    "type": "directory",
+    "name": "/Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_frameworks/Debug/iphonesimulator/Debug-iphonesimulator/siprix_voip_sdk_ios/siprix_voip_sdk_ios.framework/Modules",
+    "contents": [{
+      "type": "file",
+      "name": "module.modulemap",
+      "external-contents": "/Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_frameworks/Debug/iphonesimulator/Pods.build/Debug-iphonesimulator/siprix_voip_sdk_ios.build/unextended-module.modulemap",
+    }]
+    },
+    {
+    "type": "directory",
+    "name": "/Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_frameworks/Debug/iphonesimulator/Debug-iphonesimulator/siprix_voip_sdk_ios/siprix_voip_sdk_ios.framework/Headers",
+    "contents": [{
+      "type": "file",
+      "name": "siprix_voip_sdk_ios-Swift.h",
+      "external-contents": "/Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_frameworks/Debug/iphonesimulator/Pods.build/Debug-iphonesimulator/siprix_voip_sdk_ios.build/unextended-interface-header.h",
+    }]
+  }]
+}
