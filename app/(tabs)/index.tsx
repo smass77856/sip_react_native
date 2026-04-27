@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView, Dimensions, Alert, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
@@ -32,28 +32,21 @@ export default function DialPadScreen() {
   const handleCall = () => {
     if (!phoneNumber) return;
     console.log('Calling...', phoneNumber);
-    // TODO: Add actual SIP/call logic here
     
-    // Attempt to open the Flutter module via a native bridge
-    // Since this is an Expo project, you will need a custom native module
-    // or an Expo config plugin to launch the FlutterViewController/FlutterActivity.
-    // For now, we will show an alert.
-    import('react-native').then(({ Alert, Linking }) => {
-      const url = `flutter-siprix://call?number=${phoneNumber}`;
-      
-      Linking.canOpenURL(url).then(supported => {
-        if (supported) {
-          Linking.openURL(url);
-        } else {
-          Alert.alert(
-            'Lỗi mở App',
-            'Không tìm thấy module Flutter được cài đặt trên thiết bị (hoặc chưa cấu hình scheme). Vui lòng đảm bảo module Flutter đã được build và chạy trên máy.',
-            [{ text: 'OK' }]
-          );
-        }
-      }).catch(err => {
-        console.error('An error occurred', err);
-      });
+    const url = `flutter-siprix://call?number=${phoneNumber}`;
+    
+    Linking.canOpenURL(url).then(supported => {
+      if (supported) {
+        Linking.openURL(url);
+      } else {
+        Alert.alert(
+          'Lỗi mở App',
+          'Không tìm thấy module Flutter được cài đặt trên thiết bị (hoặc chưa cấu hình scheme). Vui lòng đảm bảo module Flutter đã được build và chạy trên máy.',
+          [{ text: 'OK' }]
+        );
+      }
+    }).catch(err => {
+      console.error('An error occurred', err);
     });
   };
 
