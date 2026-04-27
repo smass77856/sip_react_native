@@ -1,0 +1,4 @@
+
+module siprix_voip_sdk_ios.Swift {
+  header "siprix_voip_sdk_ios-Swift.h"
+}

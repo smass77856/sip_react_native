@@ -1,0 +1,19 @@
+{
+  "" : {
+    "diagnostics" : "/Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/siprix_voip_sdk_ios.build/Objects-normal/arm64/siprix_voip_sdk_ios-primary.dia",
+    "emit-module-dependencies" : "/Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/siprix_voip_sdk_ios.build/Objects-normal/arm64/siprix_voip_sdk_ios-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/siprix_voip_sdk_ios.build/Objects-normal/arm64/siprix_voip_sdk_ios-primary-emit-module.dia",
+    "pch" : "/Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/siprix_voip_sdk_ios.build/Objects-normal/arm64/siprix_voip_sdk_ios-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/siprix_voip_sdk_ios.build/Objects-normal/arm64/siprix_voip_sdk_ios-primary.swiftdeps"
+  },
+  "/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_ios-1.0.29/ios/Classes/SiprixVoipSdkPlugin.swift" : {
+    "const-values" : "/Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/siprix_voip_sdk_ios.build/Objects-normal/arm64/SiprixVoipSdkPlugin.swiftconstvalues",
+    "dependencies" : "/Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/siprix_voip_sdk_ios.build/Objects-normal/arm64/SiprixVoipSdkPlugin.d",
+    "diagnostics" : "/Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/siprix_voip_sdk_ios.build/Objects-normal/arm64/SiprixVoipSdkPlugin.dia",
+    "index-unit-output-path" : "/Pods.build/Debug-iphonesimulator/siprix_voip_sdk_ios.build/Objects-normal/arm64/SiprixVoipSdkPlugin.o",
+    "llvm-bc" : "/Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/siprix_voip_sdk_ios.build/Objects-normal/arm64/SiprixVoipSdkPlugin.bc",
+    "object" : "/Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/siprix_voip_sdk_ios.build/Objects-normal/arm64/SiprixVoipSdkPlugin.o",
+    "swift-dependencies" : "/Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/siprix_voip_sdk_ios.build/Objects-normal/arm64/SiprixVoipSdkPlugin.swiftdeps",
+    "swiftmodule" : "/Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/siprix_voip_sdk_ios.build/Objects-normal/arm64/SiprixVoipSdkPlugin~partial.swiftmodule"
+  }
+}

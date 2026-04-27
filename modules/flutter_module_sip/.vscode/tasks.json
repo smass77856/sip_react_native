@@ -1,0 +1,173 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "FVM: Install Flutter Version",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["install"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Use Flutter Version",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["use", "3.35.6"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Flutter Clean",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "clean"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Flutter Pub Get",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "pub", "get"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Flutter Pub Upgrade",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "pub", "upgrade"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Flutter Run Debug",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "run", "--debug"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Flutter Run Profile",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "run", "--profile"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Flutter Run Release",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "run", "--release"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Flutter Build APK",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "build", "apk"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Flutter Build iOS",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "build", "ios"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Flutter Doctor",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "doctor"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Flutter Analyze",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "analyze"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

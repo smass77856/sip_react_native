@@ -1,98 +1,149 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView, Dimensions } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { useColorScheme } from '@/hooks/use-color-scheme';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+const { width } = Dimensions.get('window');
+const DIAL_PAD_SIZE = width * 0.2;
 
-export default function HomeScreen() {
+const DIAL_KEYS = [
+  ['1', '2', '3'],
+  ['4', '5', '6'],
+  ['7', '8', '9'],
+  ['*', '0', '#'],
+];
+
+export default function DialPadScreen() {
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === 'dark';
+
+  const textColor = isDark ? '#FFF' : '#000';
+  const buttonBgColor = isDark ? '#333' : '#E5E5EA';
+
+  const handlePress = (key: string) => {
+    setPhoneNumber((prev) => prev + key);
+  };
+
+  const handleBackspace = () => {
+    setPhoneNumber((prev) => prev.slice(0, -1));
+  };
+
+  const handleCall = () => {
+    if (!phoneNumber) return;
+    console.log('Calling...', phoneNumber);
+    // TODO: Add actual SIP/call logic here
+  };
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+    <SafeAreaView style={[styles.container, { backgroundColor: isDark ? '#000' : '#FFF' }]}>
+      <View style={styles.displayContainer}>
+        <Text style={[styles.phoneText, { color: textColor }]} numberOfLines={1} adjustsFontSizeToFit>
+          {phoneNumber}
+        </Text>
+      </View>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      <View style={styles.padContainer}>
+        {DIAL_KEYS.map((row, rowIndex) => (
+          <View key={rowIndex} style={styles.row}>
+            {row.map((key) => (
+              <TouchableOpacity
+                key={key}
+                style={[styles.dialButton, { backgroundColor: buttonBgColor }]}
+                onPress={() => handlePress(key)}
+                activeOpacity={0.7}
+              >
+                <Text style={[styles.dialButtonText, { color: textColor }]}>{key}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        ))}
+
+        <View style={styles.actionRow}>
+          <View style={styles.actionSpacer} />
+          
+          <TouchableOpacity
+            style={[styles.callButton, { backgroundColor: '#34C759' }]}
+            onPress={handleCall}
+            activeOpacity={0.8}
+          >
+            <Ionicons name="call" size={32} color="#FFF" />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.backspaceButton}
+            onPress={handleBackspace}
+            onLongPress={() => setPhoneNumber('')}
+            disabled={!phoneNumber}
+          >
+            {phoneNumber.length > 0 && (
+              <Ionicons name="backspace-outline" size={32} color={textColor} />
+            )}
+          </TouchableOpacity>
+        </View>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    flex: 1,
+  },
+  displayContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
     alignItems: 'center',
-    gap: 8,
+    paddingHorizontal: 30,
+    paddingBottom: 20,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  phoneText: {
+    fontSize: 40,
+    fontWeight: '400',
+    letterSpacing: 2,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  padContainer: {
+    paddingBottom: 40,
+    paddingHorizontal: 20,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+    paddingHorizontal: 20,
+  },
+  dialButton: {
+    width: DIAL_PAD_SIZE,
+    height: DIAL_PAD_SIZE,
+    borderRadius: DIAL_PAD_SIZE / 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  dialButtonText: {
+    fontSize: 32,
+    fontWeight: '400',
+  },
+  actionRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    marginTop: 10,
+  },
+  actionSpacer: {
+    width: DIAL_PAD_SIZE,
+  },
+  callButton: {
+    width: DIAL_PAD_SIZE * 1.1,
+    height: DIAL_PAD_SIZE * 1.1,
+    borderRadius: (DIAL_PAD_SIZE * 1.1) / 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  backspaceButton: {
+    width: DIAL_PAD_SIZE,
+    height: DIAL_PAD_SIZE,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
