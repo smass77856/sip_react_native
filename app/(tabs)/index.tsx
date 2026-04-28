@@ -29,7 +29,7 @@ export default function DialPadScreen() {
     setPhoneNumber((prev) => prev.slice(0, -1));
   };
 
-  const handleCall = () => {
+  const handleCall = async () => {
     if (!phoneNumber) return;
     console.log('Calling...', phoneNumber);
 
@@ -38,8 +38,11 @@ export default function DialPadScreen() {
 
     if (SiprixBridge?.openSiprixCall) {
       try {
-        SiprixBridge.openSiprixCall(phoneNumber, 'user123', 'pass123');
-        console.log('openSiprixCall invoked');
+        const result = await SiprixBridge.openSiprixCall(phoneNumber, 'user123', 'pass123');
+        console.log('openSiprixCall result:', result);
+        if (result !== 'presented') {
+          Alert.alert('Native Call Status', String(result));
+        }
       } catch (err) {
         console.error('openSiprixCall error', err);
         Alert.alert('Call Error', 'Failed to open Flutter call screen. Check native logs.');
