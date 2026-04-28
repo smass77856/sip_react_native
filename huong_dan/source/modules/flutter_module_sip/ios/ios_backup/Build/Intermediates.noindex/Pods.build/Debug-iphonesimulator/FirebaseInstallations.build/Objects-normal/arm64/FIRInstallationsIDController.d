@@ -1,0 +1,31 @@
+dependencies: \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/FirebaseInstallations.build/module.modulemap \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/InstallationsIDController/FIRInstallationsIDController.m \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/InstallationsIDController/FIRInstallationsIDController.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/Foundation.framework/Modules/module.modulemap \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/PromisesObjC.build/module.modulemap \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromises.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/GoogleUtilities.build/module.modulemap \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FirebaseCoreInternal.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/FirebaseCore.build/module.modulemap \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FIRAppInternal.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FIRComponent.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FIRComponentContainer.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FIRComponentType.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FIRHeartbeatLogger.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FIRLibrary.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FIRLogger.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Errors/FIRInstallationsErrorUtil.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Public/FirebaseInstallations/FIRInstallationsErrors.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/FIRInstallationsItem.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/InstallationsIDController/FIRInstallationsStatus.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/FIRInstallationsLogger.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/IIDMigration/FIRInstallationsIIDStore.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/IIDMigration/FIRInstallationsIIDTokenStore.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/InstallationsAPI/FIRInstallationsAPIService.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/InstallationsIDController/FIRInstallationsBackoffController.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/InstallationsIDController/FIRCurrentDateProvider.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/InstallationsIDController/FIRInstallationsSingleOperationPromiseCache.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/InstallationsStore/FIRInstallationsStore.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Errors/FIRInstallationsHTTPError.h \
+  /Users/anhkhoa/Desktop/Sip/siprix_voip_sdk/example/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/InstallationsStore/FIRInstallationsStoredAuthToken.h

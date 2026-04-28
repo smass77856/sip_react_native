@@ -32,12 +32,21 @@ export default function DialPadScreen() {
   const handleCall = () => {
     if (!phoneNumber) return;
     console.log('Calling...', phoneNumber);
-    
+
     const { SiprixBridge } = NativeModules;
-    if (SiprixBridge) {
-      SiprixBridge.openSiprixCall(phoneNumber, 'user123', 'pass123');
+    console.log('SiprixBridge module:', !!SiprixBridge);
+
+    if (SiprixBridge?.openSiprixCall) {
+      try {
+        SiprixBridge.openSiprixCall(phoneNumber, 'user123', 'pass123');
+        console.log('openSiprixCall invoked');
+      } catch (err) {
+        console.error('openSiprixCall error', err);
+        Alert.alert('Call Error', 'Failed to open Flutter call screen. Check native logs.');
+      }
     } else {
       console.warn('SiprixBridge module not found');
+      Alert.alert('Module Missing', 'SiprixBridge module not found in current build.');
     }
   };
 

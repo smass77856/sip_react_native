@@ -1,34 +1,33 @@
 import 'dart:io';
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
-
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:firebase_core/firebase_core.dart';
 // import 'package:firebase_messaging/firebase_messaging.dart'; // Uncomment when using background message handler
 
 import 'package:siprix_voip_sdk/accounts_model.dart';
-import 'package:siprix_voip_sdk/messages_model.dart';
-import 'package:siprix_voip_sdk/network_model.dart';
 import 'package:siprix_voip_sdk/cdrs_model.dart';
 import 'package:siprix_voip_sdk/devices_model.dart';
 import 'package:siprix_voip_sdk/logs_model.dart';
-import 'package:siprix_voip_sdk/subscriptions_model.dart';
+import 'package:siprix_voip_sdk/messages_model.dart';
+import 'package:siprix_voip_sdk/network_model.dart';
 import 'package:siprix_voip_sdk/siprix_voip_sdk.dart';
+import 'package:siprix_voip_sdk/subscriptions_model.dart';
 
 import 'accouns_model_app.dart';
-import 'calls_model_app.dart';
-import 'subscr_model_app.dart';
-
 import 'account_add.dart';
 import 'call_add.dart';
-import 'subscr_add.dart';
-import 'settings.dart';
-import 'home.dart';
+import 'calls_model_app.dart';
 import 'firebase_options.dart';
+import 'home.dart';
+import 'settings.dart';
+import 'subscr_add.dart';
+import 'subscr_model_app.dart';
 
 //const FirebaseOptions gFCMOptions = FirebaseOptions(
 //      apiKey: '...',            //Copy from `google-services.json` - `client.api_key.current_key`
@@ -96,39 +95,6 @@ void main() async {
   );
 }
 
-Future<void> _initializeFCM() async {
-  if (Platform.isAndroid) {
-    WidgetsFlutterBinding.ensureInitialized();
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  }
-}
-
-Future<void> _loadEnv() async {
-  if (dotenv.isInitialized) {
-    return;
-  }
-  const primaryEnv = ".env";
-  const fallbackEnv = ".env.example";
-
-  Future<void> loadFile(String file) async {
-    await dotenv.load(fileName: file);
-    debugPrint("Loaded environment from $file");
-  }
-
-  try {
-    await loadFile(primaryEnv);
-  } catch (err, stackTrace) {
-    debugPrint("Failed to load $primaryEnv: $err\n$stackTrace");
-    try {
-      await loadFile(fallbackEnv);
-    } catch (fallbackErr) {
-      debugPrint("Failed to load $fallbackEnv: $fallbackErr");
-      // Don't rethrow - allow app to continue with empty env
-      // The license check will happen later in _initializeSiprix
-    }
-  }
-}
-
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -167,20 +133,61 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   }
 }
 
+Future<void> _initializeFCM() async {
+  if (Platform.isAndroid) {
+    WidgetsFlutterBinding.ensureInitialized();
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  }
+}
+
+Future<void> _loadEnv() async {
+  if (dotenv.isInitialized) {
+    return;
+  }
+  const primaryEnv = ".env";
+  const fallbackEnv = ".env.example";
+
+  Future<void> loadFile(String file) async {
+    await dotenv.load(fileName: file);
+    debugPrint("Loaded environment from $file");
+  }
+
+  try {
+    await loadFile(primaryEnv);
+  } catch (err, stackTrace) {
+    debugPrint("Failed to load $primaryEnv: $err\n$stackTrace");
+    try {
+      await loadFile(fallbackEnv);
+    } catch (fallbackErr) {
+      debugPrint("Failed to load $fallbackEnv: $fallbackErr");
+      // Don't rethrow - allow app to continue with empty env
+      // The license check will happen later in _initializeSiprix
+    }
+  }
+}
+
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
   static String _ringtonePath = "";
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
-
-  /// Returns ringtone's path saved on device
-  static String getRingtonePath() => _ringtonePath;
 
   /// Write ringtone file from asset to device
   void writeRingtoneAsset() async {
     _ringtonePath = await writeAssetAndGetFilePath("ringtone.mp3");
   }
+
+  /// Returns path and file name for recorded file
+  static Future<String> getRecFilePathName(int callId) async {
+    String dateTime = DateFormat('yyyyMMdd_HHmmss_').format(DateTime.now());
+    var homeFolder = await SiprixVoipSdk().homeFolder();
+    var filePath = '$homeFolder$dateTime$callId.mp3';
+    return filePath;
+  }
+
+  /// Returns ringtone's path saved on device
+  static String getRingtonePath() => _ringtonePath;
 
   /// Write file from assest to device and returns path to it
   static Future<String> writeAssetAndGetFilePath(String assetsFileName) async {
@@ -197,17 +204,38 @@ class MyApp extends StatefulWidget {
     file.writeAsBytes(byteData.buffer.asUint8List(), flush: true);
     return filePath;
   }
-
-  /// Returns path and file name for recorded file
-  static Future<String> getRecFilePathName(int callId) async {
-    String dateTime = DateFormat('yyyyMMdd_HHmmss_').format(DateTime.now());
-    var homeFolder = await SiprixVoipSdk().homeFolder();
-    var filePath = '$homeFolder$dateTime$callId.mp3';
-    return filePath;
-  }
 }
 
 class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute:
+          WidgetsBinding.instance.platformDispatcher.defaultRouteName != '/'
+              ? WidgetsBinding.instance.platformDispatcher.defaultRouteName
+              : null,
+      routes: <String, WidgetBuilder>{
+        CallAddPage.routeName:
+            (BuildContext context) => const CallAddPage(true),
+        SettingsPage.routeName: (BuildContext context) => const SettingsPage(),
+        AccountPage.routeName: (BuildContext context) => const AccountPage(),
+        SubscrAddPage.routeName:
+            (BuildContext context) => const SubscrAddPage(),
+        '/call_screen': (BuildContext context) {
+          // Ở đây bạn có thể bóc tách params từ defaultRouteName để hiển thị call
+          return const CallAddPage(true); // Tạm trả về trang gọi
+        },
+      },
+      home: const HomePage(),
+      title: 'OneCX (Flutter framework)',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        useMaterial3: true,
+      ),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -242,30 +270,80 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: WidgetsBinding.instance.platformDispatcher.defaultRouteName != '/' ? WidgetsBinding.instance.platformDispatcher.defaultRouteName : null,
-      routes: <String, WidgetBuilder>{
-        CallAddPage.routeName:
-            (BuildContext context) => const CallAddPage(true),
-        SettingsPage.routeName: (BuildContext context) => const SettingsPage(),
-        AccountPage.routeName: (BuildContext context) => const AccountPage(),
-        SubscrAddPage.routeName:
-            (BuildContext context) => const SubscrAddPage(),
-        '/call_screen': (BuildContext context) {
-           // Ở đây bạn có thể bóc tách params từ defaultRouteName để hiển thị call
-           return const CallAddPage(true); // Tạm trả về trang gọi
-        }
-      },
-      home: const HomePage(),
-      title: 'OneCX',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        useMaterial3: true,
-      ),
-    );
+  void _loadModels(
+    String accJsonStr,
+    String cdrsJsonStr,
+    String subsJsonStr,
+    String msgsJsonStr,
+  ) async {
+    //Accounts
+    AppAccountsModel accs = context.read<AppAccountsModel>();
+    accs.onSaveChanges = _saveAccountChanges;
+
+    //Subscriptions
+    SubscriptionsModel subs = context.read<SubscriptionsModel>();
+    subs.onSaveChanges = _saveSubscriptionChanges;
+
+    MessagesModel msgs = context.read<MessagesModel>();
+    msgs.onSaveChanges = _saveMessagesChanges;
+
+    //CDRs (Call Details Records)
+    CdrsModel cdrs = context.read<CdrsModel>();
+    cdrs.onSaveChanges = _saveCdrsChanges;
+
+    //Load messages, than accounts, then other models
+    msgs.loadFromJson(msgsJsonStr);
+    accs.loadFromJson(accJsonStr);
+    subs.loadFromJson(subsJsonStr);
+    cdrs.loadFromJson(cdrsJsonStr);
+
+    //Assign contact name resolver
+    context.read<AppCallsModel>().onResolveContactName = _resolveContactName;
+
+    //Load devices
+    context.read<DevicesModel>().load();
+  }
+
+  void _readSavedState() {
+    debugPrint('_readSavedState');
+    SharedPreferences.getInstance().then((prefs) {
+      String accJsonStr = prefs.getString('accounts') ?? '';
+      String subsJsonStr = prefs.getString('subscriptions') ?? '';
+      String cdrsJsonStr = prefs.getString('cdrs') ?? '';
+      String msgsJsonStr = prefs.getString('msgs') ?? '';
+      _loadModels(accJsonStr, cdrsJsonStr, subsJsonStr, msgsJsonStr);
+    });
+  }
+
+  String _resolveContactName(String phoneNumber) {
+    return ""; //TODO add own implementation
+    //if(phoneNumber=="100") { return "MyFriend100"; } else
+    //if(phoneNumber=="101") { return "MyFriend101"; }
+    //else                  { return "";        }
+  }
+
+  void _saveAccountChanges(String accountsJsonStr) {
+    SharedPreferences.getInstance().then((prefs) {
+      prefs.setString('accounts', accountsJsonStr);
+    });
+  }
+
+  void _saveCdrsChanges(String cdrsJsonStr) {
+    SharedPreferences.getInstance().then((prefs) {
+      prefs.setString('cdrs', cdrsJsonStr);
+    });
+  }
+
+  void _saveMessagesChanges(String msgsJsonStr) {
+    SharedPreferences.getInstance().then((prefs) {
+      prefs.setString('msgs', msgsJsonStr);
+    });
+  }
+
+  void _saveSubscriptionChanges(String subscrJsonStr) {
+    SharedPreferences.getInstance().then((prefs) {
+      prefs.setString('subscriptions', subscrJsonStr);
+    });
   }
 
   static Future<void> _initializeSiprix([LogsModel? logsModel]) async {
@@ -317,82 +395,6 @@ class _MyAppState extends State<MyApp> {
     //vdoData.noCameraImgPath = await MyApp.writeAssetAndGetFilePath("noCamera.jpg");
     //vdoData.bitrateKbps = 800;
     //SiprixVoipSdk().setVideoParams(vdoData);
-  }
-
-  void _readSavedState() {
-    debugPrint('_readSavedState');
-    SharedPreferences.getInstance().then((prefs) {
-      String accJsonStr = prefs.getString('accounts') ?? '';
-      String subsJsonStr = prefs.getString('subscriptions') ?? '';
-      String cdrsJsonStr = prefs.getString('cdrs') ?? '';
-      String msgsJsonStr = prefs.getString('msgs') ?? '';
-      _loadModels(accJsonStr, cdrsJsonStr, subsJsonStr, msgsJsonStr);
-    });
-  }
-
-  void _loadModels(
-    String accJsonStr,
-    String cdrsJsonStr,
-    String subsJsonStr,
-    String msgsJsonStr,
-  ) async {
-    //Accounts
-    AppAccountsModel accs = context.read<AppAccountsModel>();
-    accs.onSaveChanges = _saveAccountChanges;
-
-    //Subscriptions
-    SubscriptionsModel subs = context.read<SubscriptionsModel>();
-    subs.onSaveChanges = _saveSubscriptionChanges;
-
-    MessagesModel msgs = context.read<MessagesModel>();
-    msgs.onSaveChanges = _saveMessagesChanges;
-
-    //CDRs (Call Details Records)
-    CdrsModel cdrs = context.read<CdrsModel>();
-    cdrs.onSaveChanges = _saveCdrsChanges;
-
-    //Load messages, than accounts, then other models
-    msgs.loadFromJson(msgsJsonStr);
-    accs.loadFromJson(accJsonStr);
-    subs.loadFromJson(subsJsonStr);
-    cdrs.loadFromJson(cdrsJsonStr);
-
-    //Assign contact name resolver
-    context.read<AppCallsModel>().onResolveContactName = _resolveContactName;
-
-    //Load devices
-    context.read<DevicesModel>().load();
-  }
-
-  void _saveCdrsChanges(String cdrsJsonStr) {
-    SharedPreferences.getInstance().then((prefs) {
-      prefs.setString('cdrs', cdrsJsonStr);
-    });
-  }
-
-  void _saveAccountChanges(String accountsJsonStr) {
-    SharedPreferences.getInstance().then((prefs) {
-      prefs.setString('accounts', accountsJsonStr);
-    });
-  }
-
-  void _saveSubscriptionChanges(String subscrJsonStr) {
-    SharedPreferences.getInstance().then((prefs) {
-      prefs.setString('subscriptions', subscrJsonStr);
-    });
-  }
-
-  void _saveMessagesChanges(String msgsJsonStr) {
-    SharedPreferences.getInstance().then((prefs) {
-      prefs.setString('msgs', msgsJsonStr);
-    });
-  }
-
-  String _resolveContactName(String phoneNumber) {
-    return ""; //TODO add own implementation
-    //if(phoneNumber=="100") { return "MyFriend100"; } else
-    //if(phoneNumber=="101") { return "MyFriend101"; }
-    //else                  { return "";        }
   }
 }
 

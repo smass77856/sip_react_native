@@ -1,0 +1,14 @@
+{
+  "name": "notification_test",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Simple FCM sender for testing notifications (legacy API)",
+  "scripts": {
+    "send": "node send.js",
+    "send:v1": "node send_v1.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "firebase-admin": "^12.7.0"
+  }
+}

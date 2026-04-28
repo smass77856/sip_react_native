@@ -1,0 +1,13 @@
+# Firebase Admin credentials
+# Absolute path to your service account JSON file
+GOOGLE_APPLICATION_CREDENTIALS=/Volumes/ssd/Desktop/Sip/siprix_voip_sdk/example/notification_test/sipvoip-4e692-firebase-adminsdk-fbsvc-bc2c440d4b.json
+
+
+# Optional notification title/body
+TITLE=Test Notification
+BODY=Hello from Node.js FCM v1 tester
+
+
+NOTIFICATION_DISABLED=0
+
+PRESET=android_incoming_call

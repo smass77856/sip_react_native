@@ -1,0 +1,10 @@
+framework module siprix_voip_sdk_ios {
+  umbrella header "siprix_voip_sdk_ios-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module siprix_voip_sdk_ios.__Swift {
+  exclude header "siprix_voip_sdk_ios-Swift.h"
+}

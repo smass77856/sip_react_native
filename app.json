@@ -12,8 +12,11 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.anonymous.siprixreactnt",
       "infoPlist": {
-        "LSApplicationQueriesSchemes": ["flutter-siprix"]
-      }
+        "LSApplicationQueriesSchemes": [
+          "flutter-siprix"
+        ]
+      },
+      "appleTeamId": "U9MDKA96UR"
     },
     "android": {
       "adaptiveIcon": {
