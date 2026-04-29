@@ -16,7 +16,7 @@ class SiprixBridge(reactContext: ReactApplicationContext) : ReactContextBaseJava
 
     @ReactMethod
     fun openSiprixCall(phoneNumber: String, username: String, pass: String, promise: Promise) {
-        val activity = currentActivity
+        val activity = reactApplicationContext.currentActivity
         if (activity == null) {
             promise.reject("NO_ACTIVITY", "Current activity is null")
             return
