@@ -1,10 +1,12 @@
 package com.anonymous.siprixreactnt
 
+import android.net.Uri
 import android.util.Log
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
+import io.flutter.embedding.android.FlutterActivity
 
 class SiprixBridge(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
@@ -21,19 +23,19 @@ class SiprixBridge(reactContext: ReactApplicationContext) : ReactContextBaseJava
         }
 
         try {
-            val flutterActivityClass = Class.forName("io.flutter.embedding.android.FlutterActivity")
-            val withNewEngine = flutterActivityClass.getMethod("withNewEngine")
-            val engineBuilder = withNewEngine.invoke(null)
+            val encodedPhone = Uri.encode(phoneNumber)
+            val encodedUser = Uri.encode(username)
+            val initialRoute = "/call?phone=$encodedPhone&user=$encodedUser"
 
-            val buildMethod = engineBuilder.javaClass.getMethod("build", android.content.Context::class.java)
-            val intent = buildMethod.invoke(engineBuilder, activity) as android.content.Intent
+            val intent = FlutterActivity
+                .withNewEngine()
+                .initialRoute(initialRoute)
+                .build(activity)
 
-            intent.putExtra("phone", phoneNumber)
-            intent.putExtra("user", username)
             activity.startActivity(intent)
             promise.resolve("presented")
         } catch (e: Exception) {
-            Log.e("SiprixBridge", "Failed to open Flutter screen: ${e.message}")
+            Log.e("SiprixBridge", "Failed to open Flutter screen: ${e.message}", e)
             promise.reject("OPEN_CALL_FAILED", e.message, e)
         }
     }

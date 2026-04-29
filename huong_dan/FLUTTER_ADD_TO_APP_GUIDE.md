@@ -181,7 +181,10 @@ dependencies {
   <activity
     android:name="io.flutter.embedding.android.FlutterActivity"
     android:exported="false"
-    android:theme="@style/Theme.App.SplashScreen" />
+    android:theme="@style/AppTheme"
+    android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+    android:hardwareAccelerated="true"
+    android:windowSoftInputMode="adjustResize" />
 </application>
 ```
 
@@ -291,11 +294,13 @@ RCT_EXTERN_METHOD(openSiprixCall:(NSString *)phone
 ```kotlin
 package com.anonymous.siprixreactnt
 
+import android.net.Uri
 import android.util.Log
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
+import io.flutter.embedding.android.FlutterActivity
 
 class SiprixBridge(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
@@ -310,18 +315,19 @@ class SiprixBridge(reactContext: ReactApplicationContext) : ReactContextBaseJava
         }
 
         try {
-            val flutterActivityClass = Class.forName("io.flutter.embedding.android.FlutterActivity")
-            val withNewEngine = flutterActivityClass.getMethod("withNewEngine")
-            val engineBuilder = withNewEngine.invoke(null)
-            val buildMethod = engineBuilder.javaClass.getMethod("build", android.content.Context::class.java)
-            val intent = buildMethod.invoke(engineBuilder, activity) as android.content.Intent
+            val encodedPhone = Uri.encode(phoneNumber)
+            val encodedUser = Uri.encode(username)
+            val initialRoute = "/call?phone=$encodedPhone&user=$encodedUser"
 
-            intent.putExtra("phone", phoneNumber)
-            intent.putExtra("user", username)
+            val intent = FlutterActivity
+                .withNewEngine()
+                .initialRoute(initialRoute)
+                .build(activity)
+
             activity.startActivity(intent)
             promise.resolve("presented")
         } catch (e: Exception) {
-            Log.e("SiprixBridge", "Failed to open Flutter screen: ${e.message}")
+            Log.e("SiprixBridge", "Failed to open Flutter screen: ${e.message}", e)
             promise.reject("OPEN_CALL_FAILED", e.message, e)
         }
     }
@@ -391,19 +397,23 @@ const handleCall = () => {
 ```dart
 @override
 Widget build(BuildContext context) {
+  final defaultRouteName = WidgetsBinding.instance.platformDispatcher.defaultRouteName;
+
   return MaterialApp(
-    // Đọc route được truyền từ Native (initialRoute hoặc pushRoute)
-    initialRoute: WidgetsBinding.instance.platformDispatcher.defaultRouteName != '/'
-        ? WidgetsBinding.instance.platformDispatcher.defaultRouteName
-        : null,
-    routes: <String, WidgetBuilder>{
-      '/': (context) => const HomePage(),
-      '/call_screen': (context) {
-        // Parse phone number từ route nếu cần
-        // Uri.parse(defaultRouteName).queryParameters['phone']
-        return const CallAddPage(true);
-      },
-      // ... other routes
+    initialRoute: defaultRouteName != '/' ? defaultRouteName : null,
+    onGenerateRoute: (settings) {
+      final uri = Uri.parse(settings.name ?? '/');
+
+      if (uri.path == '/call') {
+        final phone = uri.queryParameters['phone'];
+        final user = uri.queryParameters['user'];
+        return MaterialPageRoute(
+          builder: (_) => CallAddPage(true),
+          settings: settings,
+        );
+      }
+
+      return MaterialPageRoute(builder: (_) => const HomePage(), settings: settings);
     },
     home: const HomePage(),
   );
@@ -438,15 +448,15 @@ NativeModules.SiprixBridge.openSiprixCall(phone, user, pass)
 SiprixBridge.swift                 SiprixBridge.kt
         ↓                                  ↓
 engine.navigationChannel           FlutterActivity.withNewEngine()
-.invokeMethod("pushRoute",         .initialRoute("/call_screen?phone=...")
-"/call_screen?phone=...")          .build(currentActivity)
+.invokeMethod("pushRoute",         .initialRoute("/call?phone=...&user=...")
+"/call_screen?phone=...")          .build(activity)
         ↓                                  ↓
 FlutterViewController              FlutterActivity
 .present(animated: true)           .startActivity(intent)
         ↓                                  ↓
-Flutter app khởi động với route "/call_screen"
+Flutter app khởi động với route "/call?phone=...&user=..."
         ↓
-MaterialApp routes['/call_screen'] → CallAddPage
+onGenerateRoute -> Uri.parse(route).path == '/call'
         ↓
 Giao diện SIP Call hiện ra!
 ```
