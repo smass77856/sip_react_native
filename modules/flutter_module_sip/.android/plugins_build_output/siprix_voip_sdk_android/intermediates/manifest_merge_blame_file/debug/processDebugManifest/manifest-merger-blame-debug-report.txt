@@ -1,0 +1,72 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.siprix.voip_sdk" >
+4
+5    <uses-sdk android:minSdkVersion="21" />
+6
+7    <uses-permission android:name="android.permission.INTERNET" />
+7-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:4:5-67
+7-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:4:22-64
+8    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+8-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:5:5-79
+8-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:5:22-76
+9
+10    <!-- Comment if app makes audio only calls -->
+11    <uses-permission
+11-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:8:5-89
+12        android:name="android.permission.CAMERA"
+12-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:8:22-62
+13        android:required="false" />
+13-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:8:63-87
+14    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+14-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:10:5-71
+14-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:10:22-68
+15    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+15-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:11:5-80
+15-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:11:22-77
+16    <uses-permission android:name="android.permission.VIBRATE" />
+16-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:12:5-66
+16-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:12:22-63
+17
+18    <!-- Comment if using bluetooth audio devices is not required -->
+19    <uses-permission android:name="android.permission.BLUETOOTH" />
+19-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:15:5-68
+19-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:15:22-65
+20    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+20-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:16:5-76
+20-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:16:22-73
+21
+22    <!--
+23    Uncomment if required to mute SIP call when GSM call received
+24    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+25    -->
+26
+27
+28    <!-- Foreground mode permission -->
+29    <uses-permission android:name="android.permission.WAKE_LOCK" />
+29-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:22:5-68
+29-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:22:22-65
+30
+31    <!-- Display floating notifications when incoming call received -->
+32    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+32-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:25:5-77
+32-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:25:22-74
+33    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+33-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:26:5-80
+33-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:26:22-78
+34
+35    <application>
+35-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:28:5-34:19
+36        <service
+36-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:29:9-33:68
+37            android:name="com.siprix.voip_sdk.CallNotifService"
+37-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:30:13-45
+38            android:exported="false"
+38-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:31:13-37
+39            android:foregroundServiceType="phoneCall|microphone"
+39-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:33:13-65
+40            android:stopWithTask="false" />
+40-->/Users/anhkhoa/.pub-cache/hosted/pub.dev/siprix_voip_sdk_android-1.0.25/android/src/main/AndroidManifest.xml:32:13-41
+41    </application>
+42
+43</manifest>

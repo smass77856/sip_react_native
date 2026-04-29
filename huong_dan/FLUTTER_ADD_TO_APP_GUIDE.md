@@ -141,28 +141,51 @@ end
 ```groovy
 // ... (existing code) ...
 
-// Thêm vào cuối, trước include ':app'
-setBinding(new Binding([gradle: this]))
-evaluate(new File(
-  settingsDir.parentFile,
-  'modules/flutter_module_sip/.android/include_flutter.groovy'
-))
-
 include ':app'
+includeBuild(expoAutolinking.reactNativeGradlePlugin)
+
+// Load Flutter module generated settings (an toàn khi module chưa copy)
+def flutterInclude = new File(settingsDir.getParentFile(), "modules/flutter_module_sip/.android/include_flutter.groovy")
+if (flutterInclude.exists()) {
+  setBinding(new Binding([gradle: this]))
+  evaluate(flutterInclude)
+}
 ```
 
 ### File: `android/app/build.gradle`
 
 ```groovy
+android {
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_17
+    targetCompatibility JavaVersion.VERSION_17
+    coreLibraryDesugaringEnabled true
+  }
+}
+
 dependencies {
-    implementation("com.facebook.react:react-android")
-    
-    // Thêm Flutter module làm dependency
-    implementation project(':flutter')
-    
-    // ... other deps ...
+  implementation("com.facebook.react:react-android")
+
+  // Flutter module
+  implementation project(':flutter')
+
+  // Bắt buộc cho một số Flutter plugins (vd: flutter_local_notifications)
+  coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 }
 ```
+
+### File: `android/app/src/main/AndroidManifest.xml`
+
+```xml
+<application ...>
+  <activity
+    android:name="io.flutter.embedding.android.FlutterActivity"
+    android:exported="false"
+    android:theme="@style/Theme.App.SplashScreen" />
+</application>
+```
+
+> Nếu thiếu khai báo này, khi bấm call sẽ lỗi: `ActivityNotFoundException ... io.flutter.embedding.android.FlutterActivity`.
 
 ---
 
@@ -268,7 +291,8 @@ RCT_EXTERN_METHOD(openSiprixCall:(NSString *)phone
 ```kotlin
 package com.anonymous.siprixreactnt
 
-import android.content.Intent
+import android.util.Log
+import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
@@ -278,21 +302,27 @@ class SiprixBridge(reactContext: ReactApplicationContext) : ReactContextBaseJava
     override fun getName(): String = "SiprixBridge"
 
     @ReactMethod
-    fun openSiprixCall(phoneNumber: String, username: String, pass: String) {
-        val currentActivity = currentActivity ?: return
+    fun openSiprixCall(phoneNumber: String, username: String, pass: String, promise: Promise) {
+        val activity = reactApplicationContext.currentActivity
+        if (activity == null) {
+            promise.reject("NO_ACTIVITY", "Current activity is null")
+            return
+        }
+
         try {
-            // Mở FlutterActivity với route cụ thể
-            val intent = io.flutter.embedding.android.FlutterActivity
-                .withNewEngine()
-                .initialRoute("/call_screen?phone=$phoneNumber")
-                .build(currentActivity)
+            val flutterActivityClass = Class.forName("io.flutter.embedding.android.FlutterActivity")
+            val withNewEngine = flutterActivityClass.getMethod("withNewEngine")
+            val engineBuilder = withNewEngine.invoke(null)
+            val buildMethod = engineBuilder.javaClass.getMethod("build", android.content.Context::class.java)
+            val intent = buildMethod.invoke(engineBuilder, activity) as android.content.Intent
 
             intent.putExtra("phone", phoneNumber)
             intent.putExtra("user", username)
-
-            currentActivity.startActivity(intent)
+            activity.startActivity(intent)
+            promise.resolve("presented")
         } catch (e: Exception) {
-            e.printStackTrace()
+            Log.e("SiprixBridge", "Failed to open Flutter screen: ${e.message}")
+            promise.reject("OPEN_CALL_FAILED", e.message, e)
         }
     }
 }
@@ -459,12 +489,15 @@ siprix-react-nt/
 ## ⚡️ Lệnh build
 
 ```bash
-# Sau khi thay đổi Podfile hoặc file Native
-cd ios && pod install && cd ..
-yarn ios
+# 1) Đồng bộ Flutter module (sau khi đổi pubspec)
+cd modules/flutter_module_sip && flutter pub get && cd ../..
 
-# Android
-yarn android
+# 2) iOS
+cd ios && pod install && cd ..
+npx expo run:ios
+
+# 3) Android
+npx expo run:android
 ```
 
-> **Lưu ý**: Lần build đầu tiên sẽ lâu hơn bình thường (5–10 phút) vì Gradle và CocoaPods cần tải Flutter Engine.
+> Nếu Android báo lỗi cache Gradle cũ, chạy thêm: `cd android && ./gradlew clean && cd ..` rồi build lại.

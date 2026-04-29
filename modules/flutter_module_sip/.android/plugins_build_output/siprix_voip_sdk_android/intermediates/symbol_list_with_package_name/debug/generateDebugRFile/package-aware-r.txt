@@ -1,0 +1,1 @@
+com.siprix.voip_sdk

@@ -7,7 +7,8 @@
       "mcp__plugin_context-mode_context-mode__ctx_execute_file",
       "mcp__plugin_context-mode_context-mode__ctx_search",
       "Bash(git:*)",
-      "Bash(rsync -a --delete --exclude '.git' --exclude '.dart_tool' --exclude '.idea' --exclude '.claude' --exclude 'build' --exclude 'dist' --exclude 'notification_test.zip' --exclude '*.iml' --exclude '.env' --exclude 'ios/Pods' --exclude 'ios/.symlinks' --exclude '.ios/.symlinks' --exclude '.android/local.properties' \"/Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/\" \"/Users/anhkhoa/Desktop/siprix-react-nt/huong_dan/source/modules/flutter_module_sip/\")"
+      "Bash(rsync -a --delete --exclude '.git' --exclude '.dart_tool' --exclude '.idea' --exclude '.claude' --exclude 'build' --exclude 'dist' --exclude 'notification_test.zip' --exclude '*.iml' --exclude '.env' --exclude 'ios/Pods' --exclude 'ios/.symlinks' --exclude '.ios/.symlinks' --exclude '.android/local.properties' \"/Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/\" \"/Users/anhkhoa/Desktop/siprix-react-nt/huong_dan/source/modules/flutter_module_sip/\")",
+      "WebSearch"
     ]
   }
 }

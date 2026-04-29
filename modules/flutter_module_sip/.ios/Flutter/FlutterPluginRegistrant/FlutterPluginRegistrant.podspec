@@ -22,7 +22,6 @@ Depends on all your plugins, and provides a function to register them.
   s.dependency 'firebase_core'
   s.dependency 'firebase_messaging'
   s.dependency 'flutter_local_notifications'
-  s.dependency 'integration_test'
   s.dependency 'path_provider_foundation'
   s.dependency 'shared_preferences_foundation'
   s.dependency 'siprix_voip_sdk_ios'

@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/anhkhoa/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/anhkhoa/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/.android/Flutter/.cxx/debug/6k515y17/x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/anhkhoa/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/anhkhoa/Desktop/siprix-react-nt/modules/flutter_module_sip/.android/Flutter/.cxx/debug/6k515y17/x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

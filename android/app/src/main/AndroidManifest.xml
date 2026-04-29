@@ -27,5 +27,6 @@
         <data android:scheme="siprixreactnt"/>
       </intent-filter>
     </activity>
+    <activity android:name="io.flutter.embedding.android.FlutterActivity" android:exported="false" android:theme="@style/AppTheme" android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode" android:hardwareAccelerated="true" android:windowSoftInputMode="adjustResize"/>
   </application>
 </manifest>

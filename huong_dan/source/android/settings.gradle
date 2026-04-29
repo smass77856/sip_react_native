@@ -6,7 +6,7 @@ pluginManagement {
     }.standardOutput.asText.get().trim()
   ).getParentFile().absolutePath
   includeBuild(reactNativeGradlePlugin)
-  
+
   def expoPluginsPath = new File(
     providers.exec {
       workingDir(rootDir)
@@ -35,11 +35,11 @@ rootProject.name = 'siprix-react-nt'
 
 expoAutolinking.useExpoVersionCatalog()
 
-setBinding(new Binding([gradle: this]))
-evaluate(new File(
-  settingsDir.parentFile,
-  'modules/flutter_module_sip/.android/include_flutter.groovy'
-))
-
 include ':app'
 includeBuild(expoAutolinking.reactNativeGradlePlugin)
+
+def flutterInclude = new File(settingsDir.getParentFile(), "modules/flutter_module_sip/.android/include_flutter.groovy")
+if (flutterInclude.exists()) {
+  setBinding(new Binding([gradle: this]))
+  evaluate(flutterInclude)
+}

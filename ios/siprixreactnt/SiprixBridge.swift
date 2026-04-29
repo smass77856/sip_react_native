@@ -15,15 +15,9 @@ class SiprixBridge: NSObject {
     rejecter reject: @escaping RCTPromiseRejectBlock
   ) {
     DispatchQueue.main.async {
-      let appDelegate = UIApplication.shared.delegate as? AppDelegate
-      guard let engine = appDelegate?.flutterEngine else {
-        resolve("engine_unavailable")
-        return
-      }
-
-      engine.navigationChannel.invokeMethod("pushRoute", arguments: "/call_screen?phone=\(phone)")
-
-      let flutterViewController = FlutterViewController(engine: engine, nibName: nil, bundle: nil)
+      let route = "/call_screen?phone=\(phone)"
+      let flutterViewController = FlutterViewController(project: nil, nibName: nil, bundle: nil)
+      flutterViewController.setInitialRoute(route)
       flutterViewController.modalPresentationStyle = .fullScreen
 
       guard let presenter = Self.topViewController() else {
@@ -32,7 +26,7 @@ class SiprixBridge: NSObject {
       }
 
       presenter.present(flutterViewController, animated: true) {
-        resolve("presented")
+        resolve("presented_project")
       }
     }
   }

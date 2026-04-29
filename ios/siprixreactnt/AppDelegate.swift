@@ -4,6 +4,8 @@ import ReactAppDependencyProvider
 import Flutter
 import FlutterPluginRegistrant
 
+var siprixEngineStore: FlutterEngine?
+
 @UIApplicationMain
 public class AppDelegate: ExpoAppDelegate {
   var window: UIWindow?
@@ -20,6 +22,7 @@ public class AppDelegate: ExpoAppDelegate {
     flutterEngine?.run()
     if let engine = flutterEngine {
         GeneratedPluginRegistrant.register(with: engine)
+        siprixEngineStore = engine
     }
 
     let delegate = ReactNativeDelegate()
