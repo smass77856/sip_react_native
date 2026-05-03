@@ -122,7 +122,6 @@ PODS:
     - firebase_messaging
     - Flutter
     - flutter_local_notifications
-    - integration_test
     - path_provider_foundation
     - shared_preferences_foundation
     - siprix_voip_sdk_ios
@@ -172,8 +171,6 @@ PODS:
   - hermes-engine (0.81.5):
     - hermes-engine/Pre-built (= 0.81.5)
   - hermes-engine/Pre-built (0.81.5)
-  - integration_test (0.0.1):
-    - Flutter
   - libavif/core (1.0.0)
   - libavif/libdav1d (1.0.0):
     - libavif/core
@@ -2160,7 +2157,6 @@ DEPENDENCIES:
   - GoogleDataTransport
   - GoogleUtilities
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
-  - integration_test (from `../modules/flutter_module_sip/.ios/.symlinks/plugins/integration_test/ios`)
   - nanopb
   - path_provider_foundation (from `../modules/flutter_module_sip/.ios/.symlinks/plugins/path_provider_foundation/darwin`)
   - RCTDeprecation (from `../node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation`)
@@ -2304,8 +2300,6 @@ EXTERNAL SOURCES:
   hermes-engine:
     :podspec: "../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec"
     :tag: hermes-2025-07-07-RNv0.81.0-e0fc67142ec0763c6b6153ca2bf96df815539782
-  integration_test:
-    :path: "../modules/flutter_module_sip/.ios/.symlinks/plugins/integration_test/ios"
   path_provider_foundation:
     :path: "../modules/flutter_module_sip/.ios/.symlinks/plugins/path_provider_foundation/darwin"
   RCTDeprecation:
@@ -2480,11 +2474,10 @@ SPEC CHECKSUMS:
   FirebaseMessaging: d33971b7bb252745ea6cd31ab190d1a1df4b8ed5
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   flutter_local_notifications: 395056b3175ba4f08480a7c5de30cd36d69827e4
-  FlutterPluginRegistrant: b67def6564566986e18572e948bee8a1ac7bbcb4
+  FlutterPluginRegistrant: cc2d2d35fc38771d72b0e8af9e7b86550637956d
   GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
   GoogleUtilities: 00c88b9a86066ef77f0da2fab05f65d7768ed8e1
   hermes-engine: 9f4dfe93326146a1c99eb535b1cb0b857a3cd172
-  integration_test: 4a889634ef21a45d28d50d622cf412dc6d9f586e
   libavif: 5f8e715bea24debec477006f21ef9e95432e254d
   libdav1d: 23581a4d8ec811ff171ed5e2e05cd27bad64c39f
   libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
@@ -2568,6 +2561,6 @@ SPEC CHECKSUMS:
   siprix_voip_sdk_ios: a151d26086727bec771a568fbbcc9331dcd8b80b
   Yoga: 5934998fbeaef7845dbf698f698518695ab4cd1a
 
-PODFILE CHECKSUM: 4b55cf006063731af68957a7181f4bafec5bfcba
+PODFILE CHECKSUM: bfdb735c18373c28183ae628846fbd6850e68d85
 
 COCOAPODS: 1.16.2

@@ -27,7 +27,7 @@ class SiprixBridge(reactContext: ReactApplicationContext) : ReactContextBaseJava
             // window.defaultRouteName on startup.
             val encodedPhone = Uri.encode(phoneNumber)
             val encodedUser = Uri.encode(username)
-            val initialRoute = "/call?phone=$encodedPhone&user=$encodedUser"
+            val initialRoute = "/call_screen?phone=$encodedPhone&user=$encodedUser"
 
             val intent = FlutterActivity
                 .withNewEngine()

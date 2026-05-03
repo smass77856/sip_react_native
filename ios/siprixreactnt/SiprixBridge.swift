@@ -15,18 +15,25 @@ class SiprixBridge: NSObject {
     rejecter reject: @escaping RCTPromiseRejectBlock
   ) {
     DispatchQueue.main.async {
-      let route = "/call_screen?phone=\(phone)"
-      let flutterViewController = FlutterViewController(project: nil, nibName: nil, bundle: nil)
-      flutterViewController.setInitialRoute(route)
+      // Use the pre-initialized Flutter engine from AppDelegate
+      guard let engine = siprixEngineStore else {
+        reject("NO_ENGINE", "Flutter engine not initialized", nil)
+        return
+      }
+
+      let encodedPhone = phone.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? phone
+      let route = "/call_screen?phone=\(encodedPhone)"
+      engine.navigationChannel.invokeMethod("pushRoute", arguments: route)
+      let flutterViewController = FlutterViewController(engine: engine, nibName: nil, bundle: nil)
       flutterViewController.modalPresentationStyle = .fullScreen
 
       guard let presenter = Self.topViewController() else {
-        resolve("no_presenter")
+        reject("NO_PRESENTER", "No view controller to present from", nil)
         return
       }
 
       presenter.present(flutterViewController, animated: true) {
-        resolve("presented_project")
+        resolve("presented")
       }
     }
   }

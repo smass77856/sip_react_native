@@ -214,6 +214,16 @@ class _MyAppState extends State<MyApp> {
           WidgetsBinding.instance.platformDispatcher.defaultRouteName != '/'
               ? WidgetsBinding.instance.platformDispatcher.defaultRouteName
               : null,
+      onGenerateRoute: (settings) {
+        final uri = Uri.tryParse(settings.name ?? '');
+        if (uri?.path == '/call_screen') {
+          return MaterialPageRoute(
+            settings: settings,
+            builder: (context) => const CallAddPage(true),
+          );
+        }
+        return null;
+      },
       routes: <String, WidgetBuilder>{
         CallAddPage.routeName:
             (BuildContext context) => const CallAddPage(true),

@@ -81,9 +81,5 @@
 	<string>Automatic</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSCameraUsageDescription</key>
-	<string>This app requires camera access to enable video calls and video conferencing features.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>This app requires microphone access to enable voice and video calls.</string>
 </dict>
 </plist>

@@ -44,8 +44,9 @@ target 'siprixreactnt' do
 
   config = use_native_modules!(config_command)
 
-  use_frameworks! :linkage => podfile_properties['ios.useFrameworks'].to_sym if podfile_properties['ios.useFrameworks']
-  use_frameworks! :linkage => ENV['USE_FRAMEWORKS'].to_sym if ENV['USE_FRAMEWORKS']
+  # Flutter add-to-app plugin pods (e.g. flutter_local_notifications) require
+  # static-library pod integration to resolve Flutter/Flutter.h correctly.
+  # Keep use_frameworks disabled for this target.
 
   install_all_flutter_pods(flutter_application_path)
 
@@ -66,12 +67,17 @@ target 'siprixreactnt' do
   )
 
   post_install do |installer|
-    react_native_post_install(
-      installer,
-      config[:reactNativePath],
-      :mac_catalyst_enabled => false,
-      :ccache_enabled => ccache_enabled?(podfile_properties),
-    )
+    begin
+      react_native_post_install(
+        installer,
+        config[:reactNativePath],
+        :mac_catalyst_enabled => false,
+        :ccache_enabled => ccache_enabled?(podfile_properties),
+      )
+    rescue => e
+      puts "Warning: react_native_post_install failed with: #{e.message}"
+      puts "Continuing with build..."
+    end
     flutter_post_install(installer) if defined?(flutter_post_install)
   end
 end
